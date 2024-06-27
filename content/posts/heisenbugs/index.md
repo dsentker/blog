@@ -6,8 +6,8 @@ excerpt = "Strangest Bugs"
 +++
 
 Recently I saw a video about [the Weirdest Linux Bug Ever Discovered](https://www.youtube.com/watch?v=-6fPfwixNLk). 
-In short, the problem is that printing was not possible in some cases. At first it wasn't entirely clear what the 
-problem could be. A driver? The software? The printer? The problem here was that the error did not seem to be 
+In short, the problem was that printing was not possible in some cases. At first it wasn't entirely clear what the 
+problem could be. A driver? The software? The printer? The issue was that the error did not seem to be 
 reproducible. Sometimes printing worked, sometimes it didn't.
 
 ## "Hey Dev, can you help me with the printer?"
@@ -42,7 +42,7 @@ moment be when you've identified the problem?
 
 No, your own ambition demands that you try again for the ticket!
 
-## Heisenbugs doesn't need a regular developer - they needs a detective.
+## Heisenbugs doesn't need a regular developer - they need a detective.
 So you've seen the error message in the error log for the umpteenth time. The backtrace is meaningless and you're at 
 your wits' end. Of course, there is no recipe for preventing these types of bugs. But it can help to consider a few 
 points before you lose your nerves.
@@ -123,3 +123,24 @@ career, there have often been conversations that follow this pattern:
 > **B:** _Ah, Simon also had a problem with the conversion library recently, and only with Swiss francs. Why don't you talk to him?_
 
 Often, new approaches emerge seemingly by chance, just because you have explained a particular misbehavior in more detail.
+
+## Conclusion
+
+Sure! Here's a conclusion based on your blog post:
+
+---
+
+## Conclusion
+Dealing with Heisenbugs can be one of the most challenging aspects of software development. These elusive bugs, which
+seem to vanish or change their behavior when scrutinized, require developers to shift from their usual roles and become
+detectives. The journey to identify and resolve Heisenbugs involves meticulous investigation, thorough documentation, 
+and keen attention to detail. While the process can be time-consuming and sometimes frustrating, the satisfaction of 
+finally solving these mysterious issues is unparalleled.
+
+Remember, even if a bug seems impossible to reproduce or fix, 
+persistence and a systematic approach can eventually lead to success. So, embrace the detective role, keep 
+investigating, and revisit aspects that do not directly interact with the affected component.
+
+By the way: The bug mentioned at the beginning, that printing didn't work on a Tuesday, was, to put it simply, 
+because `file` in Linux didn't interpret the Postscript file as such, but as an Erlang file. 
+Who tf would have thought of that if you originally assumed it was a printer error?

@@ -13,7 +13,7 @@
       <link>http://localhost:1313/blog/posts/heisenbugs/</link>
       <pubDate>Thu, 27 Jun 2024 11:10:57 +0200</pubDate>
       <guid>http://localhost:1313/blog/posts/heisenbugs/</guid>
-      <description>Recently I saw a video about the Weirdest Linux Bug Ever Discovered. In short, the problem is that printing was not possible in some cases. At first it wasn&amp;rsquo;t entirely clear what the problem could be. A driver? The software? The printer? The problem here was that the error did not seem to be reproducible. Sometimes printing worked, sometimes it didn&amp;rsquo;t.&#xA;&amp;ldquo;Hey Dev, can you help me with the printer?&amp;rdquo; Since several users had the same problem, it had to be a bug.</description>
+      <description>Recently I saw a video about the Weirdest Linux Bug Ever Discovered. In short, the problem was that printing was not possible in some cases. At first it wasn&amp;rsquo;t entirely clear what the problem could be. A driver? The software? The printer? The issue was that the error did not seem to be reproducible. Sometimes printing worked, sometimes it didn&amp;rsquo;t.&#xA;&amp;ldquo;Hey Dev, can you help me with the printer?&amp;rdquo; Since several users had the same problem, it had to be a bug.</description>
     </item>
     <item>
       <title>Hello World</title>
