@@ -2,11 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>The joys and pains of being a PHP Backend developer.</title>
-    <link>https://dsentker.github.io/blog/</link>
+    <link>http://localhost:1313/blog/</link>
     <description>Recent content on The joys and pains of being a PHP Backend developer.</description>
     <generator>Hugo</generator>
-    <language>de-de</language>
-    <lastBuildDate></lastBuildDate>
-    <atom:link href="https://dsentker.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Thu, 27 Jun 2024 10:43:12 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hello World</title>
+      <link>http://localhost:1313/blog/posts/hello-world/</link>
+      <pubDate>Thu, 27 Jun 2024 10:43:12 +0200</pubDate>
+      <guid>http://localhost:1313/blog/posts/hello-world/</guid>
+      <description>Every bad blog starts with &amp;ldquo;Hello, this is my first post&amp;rdquo;.</description>
+    </item>
   </channel>
 </rss>

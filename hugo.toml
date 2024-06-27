@@ -1,18 +1,18 @@
 baseURL = 'https://dsentker.github.io/blog/'
-languageCode = 'de-de'
+languageCode = 'en-us'
 title = 'The joys and pains of being a PHP Backend developer.'
 theme = "m10c"
 
 [params]
     author = "Daniel Sentker"
-description = "In Germany you say 'Gefährliches Halbwissen'"
+    description = "In Germany you say 'Gefährliches Halbwissen'"
 
 [[params.social]]
-icon = "github"
-name = "GitHub"
-url = "https://github.com/dsentker"
+    icon = "github"
+    name = "GitHub"
+    url = "https://github.com/dsentker"
 
 [[params.social]]
-icon = "twitter"
-name = "Twitter"
-url = "https://twitter.com/switchtrue_"
+    icon = "twitter"
+    name = "Twitter"
+    url = "https://twitter.com/switchtrue_"
