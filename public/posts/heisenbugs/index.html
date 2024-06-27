@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en-us">
+  <head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script>
+    <title>Heisenbugs // The joys and pains of being a PHP Backend developer.</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.128.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Daniel Sentker" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="/blog/css/main.min.4a6d5f9844bf26a346d806e7f668c32dce8c1bdf68d88e579e975f65c1684ac9.css" />
+    <link rel="stylesheet" href="/blog/css/custom.css">
+    
+
+    
+  
+
+
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Heisenbugs">
+  <meta name="twitter:description" content="Recently I saw a video about the Weirdest Linux Bug Ever Discovered. In short, the problem is that printing was not possible in some cases. At first it wasn’t entirely clear what the problem could be. A driver? The software? The printer? The problem here was that the error did not seem to be reproducible. Sometimes printing worked, sometimes it didn’t.
+“Hey Dev, can you help me with the printer?” Since several users had the same problem, it had to be a bug.">
+
+    <meta property="og:url" content="http://localhost:1313/blog/posts/heisenbugs/">
+  <meta property="og:site_name" content="The joys and pains of being a PHP Backend developer.">
+  <meta property="og:title" content="Heisenbugs">
+  <meta property="og:description" content="Recently I saw a video about the Weirdest Linux Bug Ever Discovered. In short, the problem is that printing was not possible in some cases. At first it wasn’t entirely clear what the problem could be. A driver? The software? The printer? The problem here was that the error did not seem to be reproducible. Sometimes printing worked, sometimes it didn’t.
+“Hey Dev, can you help me with the printer?” Since several users had the same problem, it had to be a bug.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-06-27T11:10:57+02:00">
+    <meta property="article:modified_time" content="2024-06-27T11:10:57+02:00">
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="http://localhost:1313/blog/"><img class="app-header-avatar" src="/blog/me.jpg" alt="Daniel Sentker" /></a>
+      <span class="app-header-title">The joys and pains of being a PHP Backend developer.</span>
+      <p>In Germany you say &#39;Gefährliches Halbwissen&#39;</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/dsentker" target="_blank" rel="noreferrer noopener me">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>GitHub</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+          <a href="https://twitter.com/switchtrue_" target="_blank" rel="noreferrer noopener me">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-twitter">
+  <title>Twitter</title>
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Heisenbugs</h1>
+      <div class="post-meta">
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Jun 27, 2024
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          7 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <p>Recently I saw a video about <a href="https://www.youtube.com/watch?v=-6fPfwixNLk">the Weirdest Linux Bug Ever Discovered</a>.
+In short, the problem is that printing was not possible in some cases. At first it wasn&rsquo;t entirely clear what the
+problem could be. A driver? The software? The printer? The problem here was that the error did not seem to be
+reproducible. Sometimes printing worked, sometimes it didn&rsquo;t.</p>
+<h2 id="hey-dev-can-you-help-me-with-the-printer">&ldquo;Hey Dev, can you help me with the printer?&rdquo;</h2>
+<p>Since several users had the same problem, it <em>had</em> to be a bug. However, it was not reliably reproducible.
+At least not at first glance. The wife of a developer came across a first clue, apparently by chance: the problems only
+occurred on a Tuesday. This is typically the moment that electrifies every developer.
+Progress! A narrowing-down of the chain of events. A reproducible error.
+As we all know, this is the first (and most important) step in fixing a bug.</p>
+<p>What the video did get me to do, however, is to write about how difficult it can be to identify bugs. Bugs that are
+difficult (or impossible) to reproduce are sometimes called <strong>Heisenbugs</strong>. I like that term.</p>
+<h2 id="so-what-is-a-heisenbug">So what is a Heisenbug?</h2>
+<p>According to <a href="https://en.wikipedia.org/wiki/Heisenbug">Wikipedia</a>, a heisenbug is</p>
+<blockquote>
+<p>a software bug that seems to disappear or alter its behavior when one attempts to study it. The term is a pun on the name of Werner Heisenberg,</p>
+</blockquote>
+<p>Even though I love debugging, these are the most difficult bugs of all. Bug fixing in agile teams is a whole other
+story anyway, but these can at least be roughly estimated (&quot;<em>The invoice number is not being forwarded to the payment interface? No problem, I know where to look</em>&quot;).</p>
+<p>So, you grab the bug ticket. But as soon as the bug doesn&rsquo;t appear again, you have a problem. Before you even get around
+to investigating the error, you need to know how to reproduce it: What could the user have done? What events could have
+led to the error message? Are there certain patterns when analyzing the error logs?</p>
+<p>You can invest hours, days or even weeks investigating a bug. By the third standup in a row, you&rsquo;ll be embarrassed to
+say that you haven&rsquo;t made any progress in fixing the bug. So what should you do? You (and your team) come to the
+conclusion that the ticket needs to be closed. Jira has such cute labels for this: <code>Won't Fix</code> or <code>Can't reproduce</code>.</p>
+<p>But a bug that you can&rsquo;t solve is still a bug. Your team wouldn&rsquo;t discover it in the next few days, but it&rsquo;s only a
+matter of time before the next user reports the problem. And every dissatisfied user is one too many. Personally, it
+really bothers me (even after work) - knowing that there&rsquo;s still a bug out there waiting to be fixed. How nice must that
+moment be when you&rsquo;ve identified the problem?</p>
+<p>No, your own ambition demands that you try again for the ticket!</p>
+<h2 id="heisenbugs-doesnt-need-a-regular-developer---they-needs-a-detective">Heisenbugs doesn&rsquo;t need a regular developer - they needs a detective.</h2>
+<p>So you&rsquo;ve seen the error message in the error log for the umpteenth time. The backtrace is meaningless and you&rsquo;re at
+your wits&rsquo; end. Of course, there is no recipe for preventing these types of bugs. But it can help to consider a few
+points before you lose your nerves.</p>
+<h3 id="be-an-investigator">Be an Investigator</h3>
+<p>Document everything you know! Go through all the tickets that have a similar bug description. Write down the
+similarities. Also note unimportant things (like <em>when</em> the bug occurred). Find a way to visualize similarities and
+eliminate differences in related tickets.
+Try to see if you can recognize certain patterns that could help you reproduce the bug, for example</p>
+<ul>
+<li>Was it always the same time of day?</li>
+<li>Did the error occur with a certain browser?</li>
+<li>Was it the same user each time?</li>
+<li>Was the user able to reproduce the problem themselves?</li>
+<li>If so, how is their setup/configuration different from yours?</li>
+</ul>
+<h3 id="try-not-to-be-the-user-not-the-developer">Try not to be the user, not the developer</h3>
+<p>Is it possible that the Bug is limited to a certain group of users? Congratulations, the Heisenbug is almost history.</p>
+<p>Even if it is never 100% possible, try to be as close to the user&rsquo;s environment as possible.
+Ideally, the user who caused the error. Again, it depends on the details - maybe a certain account balance is causing
+the error? Maybe the profile picture has a special format?
+Maybe they are using real credit card data, while you only use sample numbers in your development environment? Is
+an installed ad blocker causing scripts to fail to load? Is a backend process possibly different because the user is in
+a different time zone? Was the customer&rsquo;s data set created at a different time, which is why the same logic is not
+being executed in the code? Try to take every detail into account. It helps to think destructively:
+Don&rsquo;t think &ldquo;What detail is different for the user?&rdquo; Think &ldquo;What is the smallest possible setting that is different for the user than mine?&rdquo;</p>
+<h3 id="take-advantage-of-the-birds-eye-view">Take advantage of the bird&rsquo;s eye view</h3>
+<p>If the problem cannot be traced back to a specific entity (e.g. User group, device etc), try to gain a bird&rsquo;s eye view.</p>
+<p>Identify other patterns or similarities that can narrow down the problem. Don&rsquo;t forget that context that are hard to simulate:</p>
+<ul>
+<li>Does the bug only appear at certain times of the day?</li>
+<li>Does the problem perhaps only occur after a certain sequence of events? This refers to events that occurred long before the actual error (and about which backtraces can no longer provide information)</li>
+<li>Does the bug only occur in a certain combination of events? I heard a story from a former team member where a certain bug only occurred when he used the app on two devices at the same time, had 2FA enabled, a certain time zone was selected and a profile picture was uploaded.</li>
+<li>Consider Hardware effects during the buggy operation too: What about the network performance? What was the CPU or memory load like on server (and client)?</li>
+</ul>
+<h3 id="use-the-logging-luke">Use the Logging, Luke</h3>
+<p>Sometimes a clue is enough. A crumb of knowledge that is thrown at you as a detective, which means that you can perhaps
+guess in which area of the software the error could occur.</p>
+<p>A supervisor once gave me the advice &ldquo;Log every fart the customer makes&rdquo;.</p>
+<p>This is where logging can work for you. Log everything you can get. Log even if you think you know the value. Question
+everything. But good logging is the be-all and end-all for fighting Heisenbugs. Good logging is like a trap just waiting
+to snap shut.</p>
+<p>This is especially important psychologically: You know that you are prepared for the next event. You no longer have to
+worry that the customer will report the same error again. You look forward instead to the next occurrence of the bug
+because in this case you will get more background information.</p>
+<p>Another advantage of more intensive logging is that you can present progress to your team:</p>
+<blockquote>
+<p>&ldquo;I need more information to reproduce the error, so I created a PR that will provide us with more information in the future&rdquo;</p>
+</blockquote>
+<p>sounds better than</p>
+<blockquote>
+<p>&ldquo;I tried to reproduce the error today, but without success&rdquo;</p>
+</blockquote>
+<h2 id="instruct-your-team">Instruct your team</h2>
+<p>Speaking of which, communication with the team is not to be underestimated:
+Not being able to fix a bug can cause real stress for some developers. Not just from a personal perspective, but also
+from a professional one. Help yourself and take the bull by the horns.</p>
+<p>Talk to colleagues about your previous attempts to find the error. Communication creates trust. Getting an understanding
+from your colleagues helps you to approach the error search more calmly and consciously. Communication with your team
+has another advantage here that is often underestimated: you can use the knowledge of other developers.</p>
+<p>Every detail could be important in identifying or reproducing the error. Talk to colleagues and go into detail. In my
+career, there have often been conversations that follow this pattern:</p>
+<blockquote>
+<p><strong>A:</strong> <em>I&rsquo;ve been trying for two hours to figure out why the correct amount isn&rsquo;t being sent to the payment service provider.</em></p>
+</blockquote>
+<blockquote>
+<p><strong>B:</strong> <em>Phew, unfortunately I have no idea about that either</em></p>
+</blockquote>
+<blockquote>
+<p><strong>A:</strong> <em>I&rsquo;m really at my wits end. Interestingly, the amount is only transferred incorrectly when the currency is CHF.</em></p>
+</blockquote>
+<blockquote>
+<p><strong>B:</strong> <em>Ah, Simon also had a problem with the conversion library recently, and only with Swiss francs. Why don&rsquo;t you talk to him?</em></p>
+</blockquote>
+<p>Often, new approaches emerge seemingly by chance, just because you have explained a particular misbehavior in more detail.</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

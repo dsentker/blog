@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en-us">
   <head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script>
-    <title>Hello World // The joys and pains of being a PHP Backend developer.</title>
+    <title>Heisenbugs // The joys and pains of being a PHP Backend developer.</title>
     <link rel="shortcut icon" href="/favicon.ico" />
     <meta charset="utf-8" />
     <meta name="generator" content="Hugo 0.128.0">
@@ -18,18 +18,20 @@
 
     
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Hello World">
-  <meta name="twitter:description" content="Every bad blog starts with “Hello, this is my first post”.">
+  <meta name="twitter:title" content="Heisenbugs">
+  <meta name="twitter:description" content="Recently I saw a video about the Weirdest Linux Bug Ever Discovered. In short, the problem is that printing was not possible in some cases. At first it wasn’t entirely clear what the problem could be. A driver? The software? The printer? The problem here was that the error did not seem to be reproducible. Sometimes printing worked, sometimes it didn’t.
+“Hey Dev, can you help me with the printer?” Since several users had the same problem, it had to be a bug.">
 
-    <meta property="og:url" content="http://localhost:1313/blog/posts/hello-world/">
+    <meta property="og:url" content="http://localhost:1313/blog/posts/heisenbugs/heisenbugs/">
   <meta property="og:site_name" content="The joys and pains of being a PHP Backend developer.">
-  <meta property="og:title" content="Hello World">
-  <meta property="og:description" content="Every bad blog starts with “Hello, this is my first post”.">
+  <meta property="og:title" content="Heisenbugs">
+  <meta property="og:description" content="Recently I saw a video about the Weirdest Linux Bug Ever Discovered. In short, the problem is that printing was not possible in some cases. At first it wasn’t entirely clear what the problem could be. A driver? The software? The printer? The problem here was that the error did not seem to be reproducible. Sometimes printing worked, sometimes it didn’t.
+“Hey Dev, can you help me with the printer?” Since several users had the same problem, it had to be a bug.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-06-27T10:43:12+02:00">
-    <meta property="article:modified_time" content="2024-06-27T10:43:12+02:00">
+    <meta property="article:published_time" content="2024-06-27T11:10:57+02:00">
+    <meta property="article:modified_time" content="2024-06-27T11:10:57+02:00">
 
 
   </head>
@@ -60,7 +62,7 @@
       
   <article class="post">
     <header class="post-header">
-      <h1 class ="post-title">Hello World</h1>
+      <h1 class ="post-title">Heisenbugs</h1>
       <div class="post-meta">
         <div>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
@@ -79,7 +81,19 @@
       </div>
     </header>
     <div class="post-content">
-      <p>Every bad blog starts with &ldquo;Hello, this is my first post&rdquo;.</p>
+      <p>Recently I saw a video about <a href="https://www.youtube.com/watch?v=-6fPfwixNLk">the Weirdest Linux Bug Ever Discovered</a>.
+In short, the problem is that printing was not possible in some cases. At first it wasn&rsquo;t entirely clear what the
+problem could be. A driver? The software? The printer? The problem here was that the error did not seem to be
+reproducible. Sometimes printing worked, sometimes it didn&rsquo;t.</p>
+<h2 id="hey-dev-can-you-help-me-with-the-printer">&ldquo;Hey Dev, can you help me with the printer?&rdquo;</h2>
+<p>Since several users had the same problem, it <em>had</em> to be a bug. However, it was not reliably reproducible.
+At least not at first glance. The wife of a developer came across a first clue, apparently by chance: the problems only
+occurred on a Tuesday. This is typically the moment that electrifies every developer.
+Progress! A narrowing-down of the chain of events. A reproducible error.
+As we all know, this is the first (and most important) step in fixing a bug.</p>
+<p>What the video did get me to do, however, is to write about how difficult it can be to identify bugs. Bugs that are
+difficult (or impossible) to reproduce are sometimes called <strong>Heisenbugs</strong>. I like that term.</p>
+<p><img src="test.jpg" alt="alt text2"></p>
 
     </div>
     <div class="post-footer">

@@ -3,9 +3,26 @@ languageCode = 'en-us'
 title = 'The joys and pains of being a PHP Backend developer.'
 theme = "m10c"
 
+[markup]
+    [markup.highlight]
+    anchorLineNos = false
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ''
+    hl_inline = false
+    lineAnchors = ''
+    lineNoStart = 1
+    lineNos = true
+    lineNumbersInTable = true
+    noClasses = true
+    noHl = false
+    style = 'xcode-dark'
+    tabWidth = 4
+
 [params]
     author = "Daniel Sentker"
     description = "In Germany you say 'Gefährliches Halbwissen'"
+    avatar = "me.jpg"
 
 [[params.social]]
     icon = "github"
@@ -16,3 +33,11 @@ theme = "m10c"
     icon = "twitter"
     name = "Twitter"
     url = "https://twitter.com/switchtrue_"
+
+
+[params.style]
+  darkestColor = "#3f203c"
+  # darkColor = "#253031"
+  # lightColor = "#96a879"
+  # lightestColor = "#fff"
+  primaryColor = "#DE96FA"
