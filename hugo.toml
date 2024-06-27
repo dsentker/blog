@@ -1,6 +1,7 @@
 baseURL = 'https://dsentker.github.io/blog/'
 languageCode = 'de-de'
 title = 'The joys and pains of being a PHP Backend developer.'
+theme = "m10c"
 
 [params]
     author = "Daniel Sentker"
