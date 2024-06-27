@@ -1,8 +1,8 @@
 +++
 title = 'Heisenbugs'
 date = 2024-06-27T11:10:57+02:00
-draft = true
-excerpt = "Strangest Bugs"
+draft = false
+excerpt = "Aren't the mysterious bugs also the most interesting? That's probably what you think, unless you're the developer who has to investigate such a case."
 +++
 
 Recently I saw a video about [the Weirdest Linux Bug Ever Discovered](https://www.youtube.com/watch?v=-6fPfwixNLk). 
