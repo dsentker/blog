@@ -1,3 +1,17 @@
-baseURL = 'https://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
+baseURL = 'https://dsentker.github.io/blog/'
+languageCode = 'de-de'
+title = 'The joys and pains of being a PHP Backend developer.'
+
+[params]
+    author = "Daniel Sentker"
+description = "In Germany you say 'Gefährliches Halbwissen'"
+
+[[params.social]]
+icon = "github"
+name = "GitHub"
+url = "https://github.com/dsentker"
+
+[[params.social]]
+icon = "twitter"
+name = "Twitter"
+url = "https://twitter.com/switchtrue_"
