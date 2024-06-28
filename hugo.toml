@@ -2,6 +2,7 @@ baseURL = 'https://dsentker.github.io/blog/'
 languageCode = 'en-us'
 title = 'The joys and pains of being a PHP Backend developer.'
 theme = "m10c"
+custom_css = ["css/custom.css"]
 
 [markup]
     [markup.highlight]

@@ -15,7 +15,11 @@ install:
 
 #: Serve locally (with drafts too)
 serve:
-	hugo server --buildDrafts
+	hugo server --buildDrafts --cleanDestinationDir
+
+#: Serve locally with prod environment settings
+serve-prod:
+	HUGO_ENVIRONMENT=production HUGO_ENV=production hugo server --gc --minify --cleanDestinationDir --noHTTPCache
 
 #: Update themes
 theme-update:

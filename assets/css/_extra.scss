@@ -1,0 +1,23 @@
+.posts-list-item-title {
+  font-size: 28px;
+}
+
+.app-header-title {
+  font-size: 1.3em;
+}
+
+.app-header-avatar {
+  object-fit: cover;
+}
+
+h1.post-title {
+  color: #DE96FA;
+  font-size: 48px;
+}
+
+.posts-list-item-excerpt,
+article.post .post-content p,
+article.post .post-content li {
+  color: #eee;
+  line-height: 190%;
+}
