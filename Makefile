@@ -8,11 +8,6 @@ help:
          | column -t -s '###'
 	 @echo
 
-#: Install Hugo
-install:
-	sudo snap install hugo --channel=extended
-	@echo "Proceed with hugo new site <yourName>"
-
 #: Serve locally (with drafts too)
 serve:
 	hugo server --buildDrafts --cleanDestinationDir
@@ -21,6 +16,15 @@ serve:
 serve-prod:
 	HUGO_ENVIRONMENT=production HUGO_ENV=production hugo server --gc --minify --cleanDestinationDir --noHTTPCache
 
+#: Create a new post
+post:
+	./create_post.sh
+
 #: Update themes
 theme-update:
 	git submodule update --remote --merge
+
+#: Install Hugo
+install:
+	sudo snap install hugo --channel=extended
+	@echo "Proceed with hugo new site <yourName>"
